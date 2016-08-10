@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="war" name="nashor:war">
-    <output-path>$PROJECT_DIR$/target</output-path>
-    <root id="archive" name="nashor.war">
-      <element id="artifact" artifact-name="nashor:war exploded" />
-    </root>
-  </artifact>
-</component>
