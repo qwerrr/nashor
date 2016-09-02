@@ -38,7 +38,7 @@ public class ZookeeperWatcherTest {
 
     public static void main(String[] args) throws IOException, KeeperException, InterruptedException {
 
-        zooKeeper = ZkCommon.getZk();
+        zooKeeper = ZkConnFactory.getZk();
 
 //        existToRoot();
 //        existToSon();

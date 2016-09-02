@@ -8,10 +8,10 @@ import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.ZooDefs;
 import org.apache.zookeeper.ZooKeeper;
 
-import com.zhangyue.test.nashor.zookeeper.ZkCommon;
+import com.zhangyue.test.nashor.zookeeper.ZkConnFactory;
 
 /**
- * 使用zookeeper实现统一的命名服务
+ * ZK实现统一的命名服务
  * @author YanMeng
  * @date 16-8-16
  */
@@ -20,11 +20,12 @@ public class NameService {
     private static final String DEFAULT_NAME_SERVICE_ROOT = "/NameService";
     private static final String NAME_SERVICE_VALUE = "ns";
 
-    private String root;
+    private String root = DEFAULT_NAME_SERVICE_ROOT;
     private ZooKeeper zooKeeper;
 
     private NameService(String root){
-        this.root = (null == root || "".equals(root)) ? DEFAULT_NAME_SERVICE_ROOT : root;
+        if(null != root && !root.isEmpty())
+            this.root = root;
     }
 
     /**
@@ -42,7 +43,7 @@ public class NameService {
     }
 
     private void init() throws KeeperException, InterruptedException, IOException {
-        zooKeeper = ZkCommon.getZk();
+        zooKeeper = ZkConnFactory.getZk();
         if(null == zooKeeper.exists(root, false)){
             zooKeeper.create(root, NAME_SERVICE_VALUE.getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
         }

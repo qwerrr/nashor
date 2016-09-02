@@ -11,7 +11,7 @@ import org.apache.zookeeper.ZooKeeper;
  */
 public class ZookeeperStatTest {
     public static void main(String[] args) throws IOException {
-        ZooKeeper zooKeeper = ZkCommon.getZk();
+        ZooKeeper zooKeeper = ZkConnFactory.getZk();
 
     }
 }

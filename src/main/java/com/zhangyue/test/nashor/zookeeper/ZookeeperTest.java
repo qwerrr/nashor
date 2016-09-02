@@ -16,7 +16,7 @@ public class ZookeeperTest {
 
     public static void main(String[] args) throws IOException, KeeperException, InterruptedException {
 
-        ZooKeeper zooKeeper = ZkCommon.getZk();
+        ZooKeeper zooKeeper = ZkConnFactory.getZk();
 
         //创建根znode
         zooKeeper.create("/testZk", "测试根目录".getBytes(), ZooDefs.Ids.OPEN_ACL_UNSAFE, CreateMode.PERSISTENT);
