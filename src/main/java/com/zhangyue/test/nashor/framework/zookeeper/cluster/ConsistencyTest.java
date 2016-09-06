@@ -1,4 +1,4 @@
-package com.zhangyue.test.nashor.zookeeper.cluster;
+package com.zhangyue.test.nashor.framework.zookeeper.cluster;
 
 import java.io.IOException;
 
@@ -8,7 +8,7 @@ import org.apache.zookeeper.ZooDefs;
 import org.apache.zookeeper.ZooKeeper;
 import org.apache.zookeeper.data.Stat;
 
-import com.zhangyue.test.nashor.zookeeper.ZkConnFactory;
+import com.zhangyue.test.nashor.framework.zookeeper.ZkConnFactory;
 
 /**
  * 一致性测试

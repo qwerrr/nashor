@@ -1,4 +1,4 @@
-package com.zhangyue.test.nashor.zookeeper;
+package com.zhangyue.test.nashor.framework.zookeeper;
 
 import java.io.IOException;
 import java.util.List;

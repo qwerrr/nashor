@@ -1,4 +1,4 @@
-package com.zhangyue.test.nashor.zookeeper.example;
+package com.zhangyue.test.nashor.framework.zookeeper.example;
 
 /**
  * ZK实现特定队列的管理:

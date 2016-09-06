@@ -1,4 +1,4 @@
-package com.zhangyue.test.nashor.zookeeper.common;
+package com.zhangyue.test.nashor.framework.zookeeper.common;
 
 /**
  * 镜像, 被容器所装载, 每个容器只能装载一个镜像

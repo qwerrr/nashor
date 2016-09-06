@@ -1,7 +1,6 @@
-package com.zhangyue.test.nashor.concurrent;
+package com.zhangyue.test.nashor.DeepOfJava.concurrent;
 
 import java.util.*;
-import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 /**

@@ -1,4 +1,4 @@
-package com.zhangyue.test.nashor.zookeeper.common;
+package com.zhangyue.test.nashor.framework.zookeeper.common;
 
 /**
  * 每个Container为一个线程, 模拟一个简单的虚拟机, 可以进行输出/输出, 在发生异常或者关闭前可以保持所有数据的状态

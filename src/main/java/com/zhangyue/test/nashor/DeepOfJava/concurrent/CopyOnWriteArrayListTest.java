@@ -1,4 +1,4 @@
-package com.zhangyue.test.nashor.concurrent;
+package com.zhangyue.test.nashor.DeepOfJava.concurrent;
 
 import java.util.concurrent.CopyOnWriteArrayList;
 

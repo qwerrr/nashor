@@ -1,4 +1,4 @@
-package com.zhangyue.test.nashor.zookeeper.example;
+package com.zhangyue.test.nashor.framework.zookeeper.example;
 
 import java.io.IOException;
 import java.util.List;
@@ -8,7 +8,7 @@ import org.apache.zookeeper.KeeperException;
 import org.apache.zookeeper.ZooDefs;
 import org.apache.zookeeper.ZooKeeper;
 
-import com.zhangyue.test.nashor.zookeeper.ZkConnFactory;
+import com.zhangyue.test.nashor.framework.zookeeper.ZkConnFactory;
 
 /**
  * ZK实现统一的命名服务
