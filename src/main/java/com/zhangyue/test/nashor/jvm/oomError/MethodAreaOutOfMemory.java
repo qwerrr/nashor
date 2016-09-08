@@ -8,6 +8,6 @@ package com.zhangyue.test.nashor.jvm.oomError;
  * @auther YanMeng
  * @data 16-9-9.
  */
-public class MethodOutOfMemory {
+public class MethodAreaOutOfMemory {
 
 }
