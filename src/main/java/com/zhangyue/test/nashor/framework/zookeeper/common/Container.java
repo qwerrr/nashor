@@ -25,6 +25,7 @@ public class Container {
     public static Container getStartedContainer(Mirror mirror){
         Container container = getContainer();
         container.start(mirror);
+        return container;
     }
 
     public boolean start(Mirror mirror){

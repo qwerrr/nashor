@@ -42,6 +42,6 @@ public class HeapOutOfMemory {
     }
 
     static class OOMObject{
-
+        //NOTHING TODO
     }
 }
