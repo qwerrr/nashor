@@ -14,7 +14,7 @@ import net.sf.cglib.proxy.MethodProxy;
  * @author YanMeng
  * @date 16-9-9
  */
-public class MethodAreaOutOfMemory_ {
+public class MethodAreaOutOfMemory {
 
 
     /*
@@ -22,8 +22,8 @@ public class MethodAreaOutOfMemory_ {
         at net.sf.cglib.core.AbstractClassGenerator.create(AbstractClassGenerator.java:237)
         at net.sf.cglib.proxy.Enhancer.createHelper(Enhancer.java:377)
         at net.sf.cglib.proxy.Enhancer.create(Enhancer.java:285)
-        at com.zhangyue.test.nashor.jvm.oomError.MethodAreaOutOfMemory_.createProxyObject(MethodAreaOutOfMemory_.java:37)
-        at com.zhangyue.test.nashor.jvm.oomError.MethodAreaOutOfMemory_.main(MethodAreaOutOfMemory_.java:21)
+        at com.zhangyue.test.nashor.jvm.oomError.MethodAreaOutOfMemory.createProxyObject(MethodAreaOutOfMemory.java:37)
+        at com.zhangyue.test.nashor.jvm.oomError.MethodAreaOutOfMemory.main(MethodAreaOutOfMemory.java:21)
         at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
         at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
         at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
@@ -47,8 +47,8 @@ public class MethodAreaOutOfMemory_ {
         at java.lang.Throwable.getOurStackTrace(Throwable.java:591)
         at java.lang.Throwable.printStackTrace(Throwable.java:462)
         at java.lang.Throwable.printStackTrace(Throwable.java:451)
-        at com.zhangyue.test.nashor.jvm.oomError.MethodAreaOutOfMemory_.createProxyObject(MethodAreaOutOfMemory_.java:39)
-        at com.zhangyue.test.nashor.jvm.oomError.MethodAreaOutOfMemory_.main(MethodAreaOutOfMemory_.java:21)
+        at com.zhangyue.test.nashor.jvm.oomError.MethodAreaOutOfMemory.createProxyObject(MethodAreaOutOfMemory.java:39)
+        at com.zhangyue.test.nashor.jvm.oomError.MethodAreaOutOfMemory.main(MethodAreaOutOfMemory.java:21)
         at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
         at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:39)
         at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:25)
