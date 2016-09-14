@@ -1,4 +1,4 @@
-package com.zhangyue.test.nashor.framework.zookeeper.example;
+package com.zhangyue.test.nashor.framework.zookeeper.common;
 
 /**
  * @author YanMeng
