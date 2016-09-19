@@ -49,7 +49,12 @@ public class ConfAddOrDelWatcher implements Watcher {
                 String value = new String(zkService.getData(path + ZkContext.PATH_SEPARATOR + key));
                 logger.debug("[配置中心回调]新增 key - {}; value - {}", key, value);
                 configs.put(key, value);
-                zkService.ndcCallBack(event.getPath(), new ConfUpdateWatcher(this.zkService, this.configs, this.root));
+
+                //新增配置绑定节点数据改变事件
+                zkService.nodeDataChangedCallBack(
+                        path + ZkContext.PATH_SEPARATOR + key,
+                        new ConfUpdateWatcher(this.zkService, this.configs, this.root)
+                );
             }
 
             //本地key比远程多的需要删除
@@ -61,7 +66,11 @@ public class ConfAddOrDelWatcher implements Watcher {
                 configs.remove(key);
             }
 
-            zkService.nccCallBack(path, new ConfAddOrDelWatcher(this.zkService, this.configs, this.root));
+            //再次绑定子节点改变(新增/删除)事件
+            zkService.nodeChildrenChangedCallBack(
+                    path,
+                    new ConfAddOrDelWatcher(this.zkService, this.configs, this.root)
+            );
 
         } catch (Exception e) {
             logger.error("新增/删除配置数据异常:");

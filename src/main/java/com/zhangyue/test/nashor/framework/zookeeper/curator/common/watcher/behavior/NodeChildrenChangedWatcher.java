@@ -20,15 +20,14 @@ public class NodeChildrenChangedWatcher extends GetChildrenWatcher{
 
     @Override
     public void childrenChangedCallBack(WatchedEvent event) {
+        logger.debug("==NodeChildrenChangedWatcher - childrenChangedCallBack==");
         getWatcher().process(event);
     }
 
     @Override
     public void deletedCallBack(WatchedEvent event) {
-        try {
-            getZkService().nccCallBack(getPath(), getWatcher());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        logger.debug("==NodeChildrenChangedWatcher - deletedCallBack==");
+        //NOTHING TO DO
+        //当该方法执行时, 节点已经被删除, 不需要再次绑定事件
     }
 }

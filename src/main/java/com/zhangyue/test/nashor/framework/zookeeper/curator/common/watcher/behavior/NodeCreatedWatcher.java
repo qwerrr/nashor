@@ -19,24 +19,19 @@ public class NodeCreatedWatcher extends ExistWatcher{
 
     @Override
     public void createCallBack(WatchedEvent event) {
+        logger.debug("==NodeCreatedWatcher - createCallBack==");
         getWatcher().process(event);
     }
 
     @Override
     public void dataChangedCallBack(WatchedEvent event) {
-        try {
-            getZkService().ncCallBack(getPath(), getWatcher());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        logger.debug("==NodeCreatedWatcher - dataChangedCallBack==");
+        //NOTHING TO DO
     }
 
     @Override
     public void deletedCallBack(WatchedEvent event) {
-        try {
-            getZkService().ncCallBack(getPath(), getWatcher());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        logger.debug("==NodeCreatedWatcher - deletedCallBack==");
+        //NOTHING TO DO
     }
 }

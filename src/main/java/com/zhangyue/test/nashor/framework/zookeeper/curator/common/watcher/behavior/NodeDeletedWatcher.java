@@ -7,7 +7,7 @@ import com.zhangyue.test.nashor.framework.zookeeper.curator.common.watcher.GetDa
 import com.zhangyue.test.nashor.framework.zookeeper.curator.common.ZkService;
 
 /**
- * 节点删除时间监听器
+ * 节点删除监听器
  *
  * @author YanMeng
  * @date 16-9-19
@@ -20,8 +20,9 @@ public class NodeDeletedWatcher extends GetDataWatcher{
 
     @Override
     public void dataChangedCallBack(WatchedEvent event) {
+        logger.debug("==NodeDeletedWatcher - dataChangedCallBack==");
         try {
-            getZkService().ndCallBack(getPath(), getWatcher());
+            getZkService().nodeDeletedCallBack(getPath(), getWatcher());
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -29,6 +30,7 @@ public class NodeDeletedWatcher extends GetDataWatcher{
 
     @Override
     public void deletedCallBack(WatchedEvent event) {
+        logger.debug("==NodeDeletedWatcher - deletedCallBack==");
         getWatcher().process(event);
     }
 }

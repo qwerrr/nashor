@@ -36,7 +36,12 @@ public class ConfUpdateWatcher implements Watcher {
             String value = new String(zkService.getData(event.getPath()));
             configs.put(key, value);
             logger.debug("[配置中心回调]修改 key - {}; value - {}", key, value);
-            zkService.ndcCallBack(event.getPath(), new ConfUpdateWatcher(this.zkService, this.configs, this.root));
+
+            //给配置再次绑定节点数据改变事件
+            zkService.nodeDataChangedCallBack(
+                    event.getPath(),
+                    new ConfUpdateWatcher(this.zkService, this.configs, this.root)
+            );
         } catch (Exception e) {
             logger.error("更新配置数据异常:");
             e.printStackTrace();

@@ -26,14 +26,15 @@ public class ZkService {
      */
     public ZkService(String zkConnect){
 
-        RetryPolicy policy = new ExponentialBackoffRetry(1000, Integer.MAX_VALUE);
-        client = CuratorFrameworkFactory.builder().connectString(zkConnect)
-            .sessionTimeoutMs(30000)
-            .connectionTimeoutMs(30000)
-            .canBeReadOnly(false)
-            .retryPolicy(policy)
-            .defaultData(null)
-            .build();
+        RetryPolicy policy = new ExponentialBackoffRetry(1000, 3);
+        client = CuratorFrameworkFactory.newClient(zkConnect, policy);
+//        client = CuratorFrameworkFactory.builder().connectString(zkConnect)
+//            .sessionTimeoutMs(30000)
+//            .connectionTimeoutMs(30000)
+//            .canBeReadOnly(false)
+//            .retryPolicy(policy)
+//            .defaultData(null)
+//            .build();
         client.start();
     }
 
@@ -50,7 +51,7 @@ public class ZkService {
 
     //================================================================================ base option begin
     public boolean exists(String path) throws Exception {
-        return client.checkExists().forPath(path) == null;
+        return client.checkExists().forPath(path) != null;
     }
 
     public boolean create(String path, byte[] data, CreateMode createMode) throws Exception {
@@ -59,10 +60,12 @@ public class ZkService {
     }
 
     public List<String> getChildren(String path) throws Exception {
+        client.sync();
         return client.getChildren().forPath(path);
     }
 
     public byte[] getData(String path) throws Exception {
+        client.sync();
         return client.getData().forPath(path);
     }
 
@@ -84,7 +87,7 @@ public class ZkService {
      * @param path
      * @param watcher
      */
-    public void ncCallBack(String path, Watcher watcher) throws Exception {
+    public void nodeCreatedCallBack(String path, Watcher watcher) throws Exception {
         client.checkExists().usingWatcher(new NodeCreatedWatcher(this, watcher, path)).forPath(path);
     }
 
@@ -95,8 +98,8 @@ public class ZkService {
      * @param path
      * @param watcher
      */
-    public void ndcCallBack(String path, Watcher watcher) throws Exception {
-        client.checkExists().usingWatcher(new NodeDataChangedWatcher(this, watcher, path)).forPath(path);
+    public void nodeDataChangedCallBack(String path, Watcher watcher) throws Exception {
+        client.getData().usingWatcher(new NodeDataChangedWatcher(this, watcher, path)).forPath(path);
     }
 
     /**
@@ -107,8 +110,8 @@ public class ZkService {
      * @param watcher
      * @throws Exception
      */
-    public void ndCallBack(String path, Watcher watcher) throws Exception {
-        client.checkExists().usingWatcher(new NodeDeletedWatcher(this, watcher, path)).forPath(path);
+    public void nodeDeletedCallBack(String path, Watcher watcher) throws Exception {
+        client.getData().usingWatcher(new NodeDeletedWatcher(this, watcher, path)).forPath(path);
     }
 
     /**
@@ -119,19 +122,19 @@ public class ZkService {
      * @param watcher
      * @throws Exception
      */
-    public void nccCallBack(String path, Watcher watcher) throws Exception {
-        client.checkExists().usingWatcher(new NodeChildrenChangedWatcher(this, watcher, path)).forPath(path);
+    public void nodeChildrenChangedCallBack(String path, Watcher watcher) throws Exception {
+        client.getChildren().usingWatcher(new NodeChildrenChangedWatcher(this, watcher, path)).forPath(path);
     }
 
-    /**
-     * 绑定回调事件
-     * @param path
-     * @param watcher
-     * @throws Exception
-     */
-    public void callBack(String path, Watcher watcher) throws Exception {
-        client.checkExists().usingWatcher(watcher).forPath(path);
-    }
+//    /**
+//     * 绑定回调事件
+//     * @param path
+//     * @param watcher
+//     * @throws Exception
+//     */
+//    public void callBack(String path, Watcher watcher) throws Exception {
+//        client.checkExists().usingWatcher(watcher).forPath(path);
+//    }
 
     //================================================================================ extend option end
 

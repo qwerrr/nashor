@@ -21,10 +21,22 @@ public class ZkConfigService extends ConfigService {
     private ZkService zkService;
     private String root = ZkContext.DEFAULT_CONFIG_SERVICE_ROOT;
 
-    public ZkConfigService(String root){
+    public ZkConfigService(ZkService zkService){
+        super();
+
+        if(zkService != null){
+            this.zkService = zkService;
+        }
+        init();
+    }
+
+    public ZkConfigService(ZkService zkService, String root){
 
         super();
 
+        if(zkService != null){
+            this.zkService = zkService;
+        }
         if(root != null && !root.trim().equals("")){
             this.root = root;
         }
@@ -42,11 +54,17 @@ public class ZkConfigService extends ConfigService {
                 List<String> childrens = zkService.getChildren(root);
                 for (String key : childrens){
                     super.saveConfig(key, new String(zkService.getData(keyToPath(key))));
-                    zkService.ndcCallBack(keyToPath(key), new ConfUpdateWatcher(zkService, configs, root));
+
+                    //所有配置绑定节点数据改变事件, 用于监控配置修改
+                    zkService.nodeDataChangedCallBack(
+                            keyToPath(key),
+                            new ConfUpdateWatcher(zkService, configs, root)
+                    );
                 }
             }
-            //绑定配置增加/删除监听
-            zkService.nccCallBack(root, new ConfAddOrDelWatcher(zkService, configs, root));
+
+            //绑定子节点改变(新增/删除)事件, 用于监控配置新增/删除
+            zkService.nodeChildrenChangedCallBack(root, new ConfAddOrDelWatcher(zkService, configs, root));
         } catch (Exception e) {
             logger.error("[初始化配置中心]异常:{}", e);
         }
@@ -67,7 +85,10 @@ public class ZkConfigService extends ConfigService {
                 if(!zkService.exists(path)){    //远程也不存在
                     //创建并添加配置修改监听
                     zkService.create(path, value.getBytes(), CreateMode.PERSISTENT);
-                    zkService.ndcCallBack(path, new ConfUpdateWatcher(zkService, configs, root));
+                    zkService.nodeDataChangedCallBack(
+                            path,
+                            new ConfUpdateWatcher(zkService, configs, root)
+                    );
                     return Boolean.TRUE;
                 }
             }
@@ -120,7 +141,10 @@ public class ZkConfigService extends ConfigService {
                 zkService.setData(path, value.getBytes());
             }else{
                 zkService.create(path, value.getBytes(), CreateMode.PERSISTENT);
-                zkService.ndcCallBack(path, new ConfUpdateWatcher(zkService, configs, root));
+                zkService.nodeDataChangedCallBack(
+                        path,
+                        new ConfUpdateWatcher(zkService, configs, root)
+                );
             }
         }catch (Exception e) {
             logger.error("[新增/修改配置]异常:{}", e);

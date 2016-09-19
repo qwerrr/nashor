@@ -1,6 +1,8 @@
 package com.zhangyue.test.nashor.framework.zookeeper.curator.common;
 
 import org.apache.zookeeper.Watcher;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * zk 扩展watcher
@@ -8,6 +10,8 @@ import org.apache.zookeeper.Watcher;
  * @date 16-9-19
  */
 public class ZkExpandWatcher {
+
+    protected Logger logger = LoggerFactory.getLogger(this.getClass());
 
     private ZkService zkService;
     //这里的watcher并非真正绑定到zk的watcher, 仅用于某事件成功触发时进行回调

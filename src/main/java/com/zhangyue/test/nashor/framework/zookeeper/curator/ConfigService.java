@@ -16,7 +16,7 @@ public abstract class ConfigService {
 
     protected static Logger logger = LoggerFactory.getLogger(ConfigService.class);
 
-    protected volatile Map<String, String> configs;
+    protected volatile Map<String, String> configs = new HashMap<String, String>();
 
     /**
      * 查询单条配置
