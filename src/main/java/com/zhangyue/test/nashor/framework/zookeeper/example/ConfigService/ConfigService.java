@@ -25,7 +25,7 @@ public class ConfigService {
 
     private static Logger logger = LoggerFactory.getLogger(ConfigService.class);
 
-    private static final String DEFAULT_CONFIG_SERVICE_ROOT = "/ConfigService";
+    private static final String DEFAULT_CONFIG_SERVICE_ROOT = "/ZkConfigService";
 
     private boolean inited = false;
 
