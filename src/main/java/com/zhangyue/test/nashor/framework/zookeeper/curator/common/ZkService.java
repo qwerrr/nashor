@@ -26,15 +26,15 @@ public class ZkService {
      */
     public ZkService(String zkConnect){
 
-        RetryPolicy policy = new ExponentialBackoffRetry(1000, 3);
-        client = CuratorFrameworkFactory.newClient(zkConnect, policy);
-//        client = CuratorFrameworkFactory.builder().connectString(zkConnect)
-//            .sessionTimeoutMs(30000)
-//            .connectionTimeoutMs(30000)
-//            .canBeReadOnly(false)
-//            .retryPolicy(policy)
-//            .defaultData(null)
-//            .build();
+        RetryPolicy policy = new ExponentialBackoffRetry(1000, 10000);
+//        client = CuratorFrameworkFactory.newClient(zkConnect, policy);
+        client = CuratorFrameworkFactory.builder().connectString(zkConnect)
+            .sessionTimeoutMs(30000)
+            .connectionTimeoutMs(30000)
+            .canBeReadOnly(false)
+            .retryPolicy(policy)
+            .defaultData(null)
+            .build();
         client.start();
     }
 
