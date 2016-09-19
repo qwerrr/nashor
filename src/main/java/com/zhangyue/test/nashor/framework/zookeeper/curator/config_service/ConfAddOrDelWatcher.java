@@ -15,6 +15,7 @@ import com.zhangyue.test.nashor.framework.zookeeper.curator.common.ZkService;
 
 /**
  * 配置信息新增/删除监听器
+ *
  * @author YanMeng
  * @date 16-9-18
  */

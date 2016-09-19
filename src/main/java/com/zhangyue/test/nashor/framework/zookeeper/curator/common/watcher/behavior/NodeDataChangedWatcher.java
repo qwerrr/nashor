@@ -7,6 +7,7 @@ import com.zhangyue.test.nashor.framework.zookeeper.curator.common.watcher.GetDa
 import com.zhangyue.test.nashor.framework.zookeeper.curator.common.ZkService;
 
 /**
+ * 节点数据改变监听器
  * @author YanMeng
  * @date 16-9-19
  */

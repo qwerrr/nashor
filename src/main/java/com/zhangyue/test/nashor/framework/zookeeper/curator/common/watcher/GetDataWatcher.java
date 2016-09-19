@@ -8,6 +8,11 @@ import com.zhangyue.test.nashor.framework.zookeeper.curator.common.ZkService;
 
 /**
  * getData绑定watcher, 扩展原有watcher接口, 将枚举转为不同方法回调
+ *
+ * getData所绑定的watcher会被以下事件所触发:
+ *      NodeDataChanged     节点数据被修改
+ *      NodeDeleted         节点被删除
+ *
  * @author YanMeng
  * @date 16-9-14
  */
@@ -20,7 +25,9 @@ public abstract class GetDataWatcher extends ZkExpandWatcher implements Watcher{
         super(zkService, watcher, path);
     }
 
+
     public void process(WatchedEvent event) {
+
         Event.EventType eventType = event.getType();
 
         switch (eventType){

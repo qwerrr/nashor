@@ -10,7 +10,7 @@ import com.zhangyue.test.nashor.framework.zookeeper.curator.common.ZkContext;
 import com.zhangyue.test.nashor.framework.zookeeper.curator.common.ZkService;
 
 /**
- * ZK实现配置管理
+ * ZK实现的配置中心
  *
  * @author YanMeng
  * @date 16-9-2

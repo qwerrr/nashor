@@ -12,6 +12,8 @@ import org.apache.zookeeper.Watcher;
 import com.zhangyue.test.nashor.framework.zookeeper.curator.common.watcher.behavior.*;
 
 /**
+ * Curator框架封装, 将和方法相关的watcher转为和事件相关
+ *
  * @author YanMeng
  * @date 16-9-19
  */

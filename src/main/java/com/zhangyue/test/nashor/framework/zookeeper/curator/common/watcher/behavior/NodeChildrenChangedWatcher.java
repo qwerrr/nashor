@@ -6,7 +6,9 @@ import org.apache.zookeeper.Watcher;
 import com.zhangyue.test.nashor.framework.zookeeper.curator.common.watcher.GetChildrenWatcher;
 
 import com.zhangyue.test.nashor.framework.zookeeper.curator.common.ZkService;
+
 /**
+ * 节点的子节点修改(新增/删除)监听器
  * @author YanMeng
  * @date 16-9-19
  */

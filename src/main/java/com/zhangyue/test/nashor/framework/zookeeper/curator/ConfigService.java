@@ -7,6 +7,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
+ * 封装配置中心和具体实现不相关的内容
+ *
  * @author YanMeng
  * @date 16-9-19
  */

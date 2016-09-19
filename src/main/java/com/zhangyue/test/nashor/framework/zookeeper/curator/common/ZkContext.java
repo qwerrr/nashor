@@ -1,6 +1,8 @@
 package com.zhangyue.test.nashor.framework.zookeeper.curator.common;
 
 /**
+ * zk上下文
+ *
  * @author YanMeng
  * @date 16-9-19
  */

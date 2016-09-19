@@ -3,12 +3,14 @@ package com.zhangyue.test.nashor.framework.zookeeper.curator.common;
 import org.apache.zookeeper.Watcher;
 
 /**
+ * zk 扩展watcher
  * @author YanMeng
  * @date 16-9-19
  */
 public class ZkExpandWatcher {
 
     private ZkService zkService;
+    //这里的watcher并非真正绑定到zk的watcher, 仅用于某事件成功触发时进行回调
     private Watcher watcher;
     private String path;
 

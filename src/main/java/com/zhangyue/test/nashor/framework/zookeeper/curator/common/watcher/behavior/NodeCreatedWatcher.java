@@ -7,7 +7,7 @@ import com.zhangyue.test.nashor.framework.zookeeper.curator.common.watcher.Exist
 import com.zhangyue.test.nashor.framework.zookeeper.curator.common.ZkService;
 
 /**
- *
+ * 节点创建监听器
  * @author YanMeng
  * @date 16-9-19
  */
