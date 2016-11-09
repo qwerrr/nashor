@@ -1,4 +1,4 @@
-package com.zhangyue.test.nashor.other.hash;
+package com.zhangyue.test.nashor.algorithm.hash;
 
 /**
  * @author YanMeng

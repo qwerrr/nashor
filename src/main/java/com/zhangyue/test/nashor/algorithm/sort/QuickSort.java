@@ -1,4 +1,4 @@
-package com.zhangyue.test.nashor.other.sort;
+package com.zhangyue.test.nashor.algorithm.sort;
 
 /**
  * 快排
