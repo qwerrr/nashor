@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.zhangyue.test.nashor</groupId>
     <artifactId>nashor</artifactId>
-    <packaging>war</packaging>
+    <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <name>nashor Maven Webapp</name>
     <url>http://maven.apache.org</url>
@@ -12,13 +12,11 @@
         <finalName>nashor</finalName>
     </build>
 
-
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>3.8.1</version>
-            <scope>test</scope>
+            <version>4.5</version>
         </dependency>
         <dependency>
             <artifactId>log4j</artifactId>
@@ -74,6 +72,7 @@
                 </exclusion>
             </exclusions>
         </dependency>
+
     </dependencies>
 
 </project>

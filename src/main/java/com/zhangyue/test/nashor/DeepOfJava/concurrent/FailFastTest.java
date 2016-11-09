@@ -16,11 +16,12 @@ public class FailFastTest {
 
         List<Integer> list = null;
 
-        list = getSyncList();               //ConcurrentModificationException
         list = getVector();                 //ConcurrentModificationException
+        list = getSyncList();               //ConcurrentModificationException
         list = getCopyOnWriteArrayList();   //OK
 
         for(int i = 0; i < 10; i++) list.add(i);
+
         Iterator<Integer> it = list.iterator();
         while (it.hasNext()){
             Integer i = it.next();
