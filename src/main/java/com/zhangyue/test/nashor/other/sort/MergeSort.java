@@ -8,5 +8,18 @@ package com.zhangyue.test.nashor.other.sort;
  * @author YanMeng
  * @date 16-11-8
  */
-public class MergeSort {
+public class MergeSort extends BaseSort{
+
+    public MergeSort(){
+        super();
+    }
+
+    public MergeSort(int capacity){
+        super(capacity);
+    }
+
+    @Override
+    public void insert(int n) {
+
+    }
 }

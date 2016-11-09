@@ -8,5 +8,18 @@ package com.zhangyue.test.nashor.other.sort;
  * @author YanMeng
  * @date 16-11-8
  */
-public class QuickSort {
+public class QuickSort extends BaseSort{
+
+    public QuickSort(){
+        super();
+    }
+
+    public QuickSort(int capacity){
+        super(capacity);
+    }
+
+    @Override
+    public void insert(int n) {
+
+    }
 }

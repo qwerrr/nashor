@@ -8,5 +8,18 @@ package com.zhangyue.test.nashor.other.sort;
  * @author YanMeng
  * @date 16-11-8
  */
-public class HeapSort {
+public class HeapSort extends BaseSort{
+
+    public HeapSort(){
+        super();
+    }
+
+    public HeapSort(int capacity){
+        super(capacity);
+    }
+
+    @Override
+    public void insert(int n) {
+
+    }
 }
