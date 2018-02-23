@@ -13,17 +13,17 @@ public class FailFastIterTest {
 
         for(int i = 0; i < 10; i++) list.add(i);
 
-//        for(Integer i : list){
-//            if(i == 5)
-//                list.remove(0);
-//            System.out.println(i);
-//        }
-
-        for(int i = 0; i < list.size(); i++){
-            if(list.get(i) == 5)
-                list.add(10);
-            System.out.println(list.get(i));
+        for(Integer i : list){
+            if(i == 5)
+                list.remove(0);
+            System.out.println(i);
         }
+
+//        for(int i = 0; i < list.size(); i++){
+//            if(list.get(i) == 5)
+//                list.add(10);
+//            System.out.println(list.get(i));
+//        }
 
 
 

@@ -12,7 +12,45 @@
         <finalName>nashor</finalName>
     </build>
 
+    <properties>
+        <hadoop.version>2.6.0-cdh5.5.1</hadoop.version>
+        <scala.version>2.11.7</scala.version>
+        <spark.vserion>1.6.1</spark.vserion>
+    </properties>
+
     <dependencies>
+        <!--scala/spark begin-->
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-library</artifactId>
+            <version>${scala.version}</version>
+            <scope>${scala.scope}</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.scala-lang.modules</groupId>
+            <artifactId>scala-parser-combinators_2.11</artifactId>
+            <version>1.0.5</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-core_2.11</artifactId>
+            <version>${spark.vserion}</version>
+            <scope>${hadoop.scope}</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-hive_2.11</artifactId>
+            <version>${spark.vserion}</version>
+            <scope>${hadoop.scope}</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-sql_2.11</artifactId>
+            <version>${spark.vserion}</version>
+            <scope>${hadoop.scope}</scope>
+        </dependency>
+        <!--scala/spark end-->
+
         <!--junit-->
         <dependency>
             <groupId>junit</groupId>
@@ -42,11 +80,18 @@
             <version>1.1.2</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/cglib/cglib -->
+        <dependency>
+            <groupId>cglib</groupId>
+            <artifactId>cglib</artifactId>
+            <version>3.2.0</version>
+        </dependency>
+
         <!--dubbo-->
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>dubbo</artifactId>
-            <version>2.5.7</version>
+            <version>2.5.5</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework</groupId>
@@ -72,6 +117,7 @@
             <artifactId>curator-recipes</artifactId>
             <version>2.8.0</version>
         </dependency>
+
         <dependency>
             <groupId>org.apache.zookeeper</groupId>
             <artifactId>zookeeper</artifactId>
@@ -100,6 +146,171 @@
             </exclusions>
         </dependency>
 
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.7</version>
+        </dependency>
+
+        <dependency>
+            <groupId>commons-configuration</groupId>
+            <artifactId>commons-configuration</artifactId>
+            <version>1.10</version>
+        </dependency>
+        <dependency>
+            <groupId>commons-collections</groupId>
+            <artifactId>commons-collections</artifactId>
+            <version>3.2.2</version>
+        </dependency>
     </dependencies>
 
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.scala-tools</groupId>
+                    <artifactId>maven-scala-plugin</artifactId>
+                    <version>2.15.2</version>
+                    <executions>
+                        <execution>
+                            <id>scala-compile-first</id>
+                            <goals>
+                                <goal>compile</goal>
+                            </goals>
+                            <configuration>
+                                <includes>
+                                    <include>**/*.scala</include>
+                                </includes>
+                            </configuration>
+                        </execution>
+                        <execution>
+                            <id>scala-test-compile</id>
+                            <goals>
+                                <goal>testCompile</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+                <plugin>
+                    <groupId>net.alchim31.maven</groupId>
+                    <artifactId>scala-maven-plugin</artifactId>
+                    <version>3.2.0</version>
+                    <executions>
+                        <execution>
+                            <id>compile-scala</id>
+                            <phase>compile</phase>
+                            <goals>
+                                <goal>add-source</goal>
+                                <goal>compile</goal>
+                            </goals>
+                        </execution>
+                        <execution>
+                            <id>test-compile-scala</id>
+                            <phase>test-compile</phase>
+                            <goals>
+                                <goal>add-source</goal>
+                                <goal>testCompile</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <scalaVersion>2.11.7</scalaVersion>
+                    </configuration>
+                </plugin>
+
+                <plugin>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <version>2.2-beta-5</version>
+                    <configuration>
+                        <descriptor>assembly.xml</descriptor>
+                    </configuration>
+                    <executions>
+                        <execution>
+                            <id>make-assembly</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>single</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <!-- 资源根目录排除各环境的配置，使用单独的资源目录来指定 -->
+                <excludes>
+                    <exclude>test/*</exclude>
+                    <exclude>prod/*</exclude>
+                    <exclude>dev/*</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources/${profiles.active}</directory>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.3</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <showWarnings>true</showWarnings>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.0.2</version>
+                <configuration>
+                    <archive>
+                        <addMavenDescriptor>false</addMavenDescriptor>
+                    </archive>
+                    <excludes>
+                        <exclude>**/*.xml</exclude>
+                        <exclude>**/*.properties</exclude>
+                    </excludes>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+    <profiles>
+        <profile>
+            <!-- 本地开发环境 -->
+            <id>dev</id>
+            <properties>
+                <profiles.active>dev</profiles.active>
+                <hadoop.scope>compile</hadoop.scope>
+                <scala.scope>compile</scala.scope>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+        <profile>
+            <!-- 测试环境 -->
+            <id>test</id>
+            <properties>
+                <profiles.active>test</profiles.active>
+                <hadoop.scope>provided</hadoop.scope>
+                <scala.scope>provided</scala.scope>
+            </properties>
+        </profile>
+        <profile>
+            <!-- 生产环境 -->
+            <id>prod</id>
+            <properties>
+                <profiles.active>prod</profiles.active>
+                <hadoop.scope>provided</hadoop.scope>
+                <scala.scope>provided</scala.scope>
+            </properties>
+        </profile>
+    </profiles>
 </project>
