@@ -1,4 +1,4 @@
-package com.zhangyue.test.nashor.DeepOfJava.classloader;
+package com.zhangyue.test.nashor.java.classloader;
 
 /**
  * 被动引用(初始化)测试

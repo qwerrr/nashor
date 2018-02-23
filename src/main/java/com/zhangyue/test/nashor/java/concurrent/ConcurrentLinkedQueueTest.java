@@ -1,4 +1,4 @@
-package com.zhangyue.test.nashor.DeepOfJava.concurrent;
+package com.zhangyue.test.nashor.java.concurrent;
 
 /**
  * @desc

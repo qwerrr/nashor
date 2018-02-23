@@ -1,4 +1,4 @@
-package com.zhangyue.test.nashor.DeepOfJava;
+package com.zhangyue.test.nashor.java;
 
 import java.util.ArrayList;
 import java.util.List;

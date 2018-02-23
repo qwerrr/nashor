@@ -1,4 +1,4 @@
-package com.zhangyue.test.nashor.DeepOfJava.collection;
+package com.zhangyue.test.nashor.java.collection;
 
 import java.util.Map;
 import java.util.SortedMap;

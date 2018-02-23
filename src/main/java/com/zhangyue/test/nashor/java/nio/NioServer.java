@@ -1,4 +1,4 @@
-package com.zhangyue.test.nashor.DeepOfJava.nio;
+package com.zhangyue.test.nashor.java.nio;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;

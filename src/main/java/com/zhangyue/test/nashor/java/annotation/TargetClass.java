@@ -1,4 +1,4 @@
-package com.zhangyue.test.nashor.DeepOfJava.annotation;
+package com.zhangyue.test.nashor.java.annotation;
 
 /**
  * 注解可以修饰:

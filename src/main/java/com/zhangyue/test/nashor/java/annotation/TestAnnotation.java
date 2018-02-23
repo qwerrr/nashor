@@ -1,4 +1,4 @@
-package com.zhangyue.test.nashor.DeepOfJava.annotation;
+package com.zhangyue.test.nashor.java.annotation;
 
 import java.lang.annotation.*;
 

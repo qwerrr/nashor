@@ -1,4 +1,4 @@
-package com.zhangyue.test.nashor.DeepOfJava.concurrent.atomic;
+package com.zhangyue.test.nashor.java.concurrent.atomic;
 
 import java.util.concurrent.atomic.AtomicInteger;
 
