@@ -11,7 +11,7 @@
     <properties>
         <hadoop.version>2.6.0-cdh5.5.1</hadoop.version>
         <scala.version>2.11.7</scala.version>
-        <spark.vserion>2.1.1</spark.vserion>
+        <spark.vserion>2.4.4</spark.vserion>
     </properties>
 
     <repositories>
