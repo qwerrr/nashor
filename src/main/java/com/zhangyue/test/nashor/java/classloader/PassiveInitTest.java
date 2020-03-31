@@ -14,7 +14,9 @@ public class PassiveInitTest {
         123
      */
     public static void main(String[] args) {
-        System.out.println(SubClass.v);
+        System.out.println(SubClass.v); //执行时子类的静态代码块不执行
+        System.out.println("=====================");
+        new SubClass();
     }
 }
 

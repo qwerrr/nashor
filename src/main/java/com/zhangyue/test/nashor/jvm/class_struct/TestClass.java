@@ -16,7 +16,7 @@ public final class TestClass {
     private long    l = 123l;
     private Long    L = 456L;
 
-    private String strV = "妍梦";
+    private String strV = "ym";
 
     public Long LongV = 123L;
     public Double DoubleV = 123.45;
